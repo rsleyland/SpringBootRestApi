@@ -1,5 +1,4 @@
 package com.example.API;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,12 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-import lombok.Data;
-
-@Data
 @Document
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class Student {
+public class BaseUser {
 	@Id
 	private String id;
 	private String firstName;
@@ -28,7 +24,7 @@ public class Student {
 	private BigDecimal totalSpentInBooks;
 	private LocalDateTime createdAt;
 	
-	public Student(String firstName, String lastName, String email, Gender gender, Address address,
+	public BaseUser(String firstName, String lastName, String email, Gender gender, Address address,
 			List<String> favouriteSubjects, BigDecimal totalSpentInBooks, LocalDateTime createdAt) {
 		super();
 		this.firstName = firstName;
@@ -47,9 +43,5 @@ public class Student {
 				+ ", gender=" + gender + ", address=" + address + ", favouriteSubjects=" + favouriteSubjects
 				+ ", totalSpentInBooks=" + totalSpentInBooks + ", createdAt=" + createdAt + "]";
 	}
-	
-	
-	
-	
 	
 }
