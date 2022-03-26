@@ -12,7 +12,6 @@ import com.example.API.Gender;
 import org.apache.tomcat.util.json.JSONParser;
 import org.apache.tomcat.util.json.ParseException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 
 @RestController
 @RequestMapping("api/auth")
@@ -33,6 +32,7 @@ public class AuthController {
     @PostMapping ("/register")
     public Optional<BaseUser> registerNewUser(@RequestBody String payload) {
         try {
+
             JSONParser parser = new JSONParser(payload);
             LinkedHashMap<String, Object> obj = parser.parseObject();
             Address address = new Address("Canada", "Montreal", "H2l 4D4");
