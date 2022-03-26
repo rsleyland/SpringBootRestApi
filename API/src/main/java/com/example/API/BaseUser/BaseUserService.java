@@ -1,4 +1,4 @@
-package com.example.API;
+package com.example.API.BaseUser;
 
 import java.util.List;
 import java.util.Optional;

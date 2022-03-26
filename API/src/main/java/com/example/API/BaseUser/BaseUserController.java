@@ -1,4 +1,4 @@
-package com.example.API;
+package com.example.API.BaseUser;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,14 +25,9 @@ public class BaseUserController {
 		return baseUserService.getAllUsers();
 	};
 
-	@GetMapping("/{email}")
-	public Optional<BaseUser> fetchUserByEmail(@PathVariable("email") String email) {
-		return baseUserService.getUserByEmail(email);
-	};
-
-	@GetMapping("/id/{id}")
-	public Optional<BaseUser> fetchUserById(@PathVariable("id") String id) {
-		return baseUserService.getUserById(id);
+	@GetMapping("/{slug}")
+	public Optional<BaseUser> fetchUserByPathVar(@PathVariable("slug") String slug) {
+		return slug.contains("@") ? baseUserService.getUserByEmail(slug) : baseUserService.getUserById(slug);
 	};
 
 };
