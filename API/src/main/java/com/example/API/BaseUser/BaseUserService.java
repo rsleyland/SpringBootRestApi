@@ -17,12 +17,24 @@ public class BaseUserService {
 		this.baseUserRepository = baseUserRepository;
 	}
 
-	public List<BaseUser> getAllUsers() { return baseUserRepository.findAll(); };
+	public List<BaseUser> getAllUsers() {
+		List<BaseUser> users = baseUserRepository.findAll();
+		users.forEach((u)->{
+			u.setPassword("HIDDEN");
+		});
+		return users;
+	};
 
-	public Optional<BaseUser> getUserByEmail(String email) { return baseUserRepository.findBaseUserByEmail(email); };
+	public Optional<BaseUser> getUserByEmail(String email) {
+		Optional<BaseUser> user = baseUserRepository.findBaseUserByEmail(email);
+		user.get().setPassword("HIDDEN");
+		return user;
+	};
 
 	public Optional<BaseUser> getUserById(String id) {
-		return baseUserRepository.findBaseUserById(id);
+		Optional<BaseUser> user = baseUserRepository.findBaseUserById(id);
+		user.get().setPassword("HIDDEN");
+		return user;
 	};
 
 };
